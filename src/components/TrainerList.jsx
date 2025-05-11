@@ -1,17 +1,23 @@
 import React from "react";
 import TrainerCard from "./TrainerCard";
 
-const TrainerList = ({ trainers }) => {
+const TrainerList = ({ trainers, onEdit }) => {
+  if (!Array.isArray(trainers) || trainers.length === 0) {
+    return <p className="text-center text-gray-500">Loading trainers...</p>;
+  }
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      {trainers.map((trainer) => (
-        <TrainerCard
-          key={trainer.trainerId}
-          trainer={trainer}
-          onEdit={() => {}}
-          onDelete={() => {}}
-        />
-      ))}
+    <div className="trainer-list">
+      {trainers
+        .filter((trainer) => trainer && trainer.trainerId)
+        .map((trainer) => (
+          <TrainerCard
+            key={trainer.trainerId}
+            trainer={trainer}
+            onEdit={onEdit}
+            onDelete={() => {}}
+          />
+        ))}
     </div>
   );
 };

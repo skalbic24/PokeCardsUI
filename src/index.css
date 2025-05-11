@@ -1,17 +1,33 @@
+/* === Base Styling === */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0 1rem;
+  background-color: #fdf6e3;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+* {
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+}
+
+img {
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* === Background Image Utility (if used) === */
 .bg-pokemon-pattern {
   background-image: url('./assets/pokemon-bg3.png');
   background-size: cover;
@@ -19,4 +35,69 @@ code {
   background-position: center;
 }
 
+/* === Trainer Card Layout === */
+.trainer-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
 
+/* === Trainer Card Styling === */
+.trainer-card {
+  background: #fff9e6;
+  border: 2px solid #2a75bb;
+  border-radius: 12px;
+  padding: 1rem;
+  max-width: 360px;
+  margin: 0 auto;
+  box-shadow: 4px 4px #2a75bb;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-image: url('/src/assets/pixel-border.png') 30 stretch;
+  border-width: 12px;
+  border-style: solid;
+}
+
+.trainer-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  border-color: #ffcb05;
+}
+
+.trainer-card .pokemon-card:hover {
+  background-color: #ffe;
+  transform: scale(1.02);
+}
+
+/* === Button Styling === */
+button:not(.icon-btn) {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #ffcb05;
+  color: #2a75bb;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 2px 2px #2a75bb;
+}
+
+
+button:hover {
+  background-color: #ffdb4d;
+  transform: scale(1.05);
+}
+
+/* === Responsive Font Adjustment === */
+@media (max-width: 640px) {
+  .trainer-card {
+    font-size: 12px;
+  }
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  cursor: pointer;
+}
